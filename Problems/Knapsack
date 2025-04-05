@@ -1,0 +1,109 @@
+The Knapsack Problem is a classic optimization problem that involves selecting a subset of items to maximize the total value while staying within a given weight limit. There are two main variations of the Knapsack Problem: the **0-1 Knapsack Problem** and the **Fractional Knapsack Problem**.
+
+### 1. 0-1 Knapsack Problem
+
+#### Problem Statement
+In the 0-1 Knapsack Problem, you are given:
+- A set of items, each with a weight and a value.
+- A maximum weight capacity of the knapsack.
+
+The goal is to determine the maximum value that can be carried in the knapsack without exceeding the weight capacity. Each item can either be included in the knapsack (1) or excluded (0), hence the name "0-1".
+
+#### Input
+- A list of items, where each item \( i \) has:
+  - Weight \( w_i \)
+  - Value \( v_i \)
+- A maximum weight capacity \( W \).
+
+#### Example
+Consider the following items:
+
+| Item | Weight | Value |
+|------|--------|-------|
+| 1    | 1      | 1     |
+| 2    | 3      | 4     |
+| 3    | 4      | 5     |
+| 4    | 5      | 7     |
+
+And a maximum weight capacity \( W = 7 \).
+
+#### Solution Approach
+The 0-1 Knapsack Problem can be solved using dynamic programming. The idea is to build a table where the entry at row \( i \) and column \( j \) represents the maximum value that can be achieved with the first \( i \) items and a weight limit of \( j \).
+
+#### Pseudocode
+```plaintext
+function knapsack_0_1(weights, values, W):
+    n = length(weights)
+    dp = array of size (n+1) x (W+1) initialized to 0
+
+    for i from 1 to n:
+        for j from 0 to W:
+            if weights[i-1] <= j:
+                dp[i][j] = max(dp[i-1][j], dp[i-1][j - weights[i-1]] + values[i-1])
+            else:
+                dp[i][j] = dp[i-1][j]
+
+    return dp[n][W]
+```
+
+#### Time Complexity
+The time complexity of the dynamic programming solution is \( O(nW) \), where \( n \) is the number of items and \( W \) is the maximum weight capacity.
+
+### 2. Fractional Knapsack Problem
+
+#### Problem Statement
+In the Fractional Knapsack Problem, you are also given:
+- A set of items, each with a weight and a value.
+- A maximum weight capacity of the knapsack.
+
+However, unlike the 0-1 Knapsack Problem, you can take fractions of an item. This means you can take any portion of an item, which allows for a more flexible approach to maximizing the total value.
+
+#### Input
+- A list of items, where each item \( i \) has:
+  - Weight \( w_i \)
+  - Value \( v_i \)
+- A maximum weight capacity \( W \).
+
+#### Example
+Using the same items as before:
+
+| Item | Weight | Value |
+|------|--------|-------|
+| 1    | 1      | 1     |
+| 2    | 3      | 4     |
+| 3    | 4      | 5     |
+| 4    | 5      | 7     |
+
+And a maximum weight capacity \( W = 7 \).
+
+#### Solution Approach
+The Fractional Knapsack Problem can be solved using a greedy algorithm. The key is to calculate the value-to-weight ratio for each item and sort the items based on this ratio in descending order. Then, you can take as much of the highest ratio item as possible until the knapsack is full.
+
+#### Pseudocode
+```plaintext
+function knapsack_fractional(weights, values, W):
+    n = length(weights)
+    items = array of tuples (value/weight, weight, value) for each item
+    sort items by value/weight in descending order
+
+    total_value = 0
+    for each item in items:
+        if W == 0:
+            break
+        if item.weight <= W:
+            total_value += item.value
+            W -= item.weight
+        else:
+            total_value += item.value * (W / item.weight)
+            W = 0
+
+    return total_value
+```
+
+#### Time Complexity
+The time complexity of the greedy solution is \( O(n \log n) \) due to the sorting step.
+
+### Conclusion
+
+- **0-1 Knapsack Problem**: You can either take an item or leave it, and it is solved using dynamic programming.
+- **Fractional Knapsack Problem**: You can take fractions of items

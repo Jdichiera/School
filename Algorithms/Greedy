@@ -1,0 +1,20 @@
+Greedy
+
+A greedy algorithm is a problem-solving approach that builds a solution piece by piece, always choosing the next piece that offers the most immediate benefit or the best local optimum. The idea is to make a series of choices, each of which looks best at the moment, with the hope that these local optimum choices will lead to a global optimum solution.
+Key Characteristics of Greedy Algorithms:
+Local Optimal Choice: At each step, the algorithm makes a choice that seems the best at that moment without considering the overall problem.
+Feasibility: The chosen option must be feasible, meaning it must satisfy the problem's constraints.
+Irrevocability: Once a choice is made, it cannot be undone. The algorithm does not backtrack.
+Optimality: Greedy algorithms do not always produce the optimal solution for all problems, but they work well for certain types of problems where local optimum choices lead to a global optimum.
+Example: Coin Change Problem
+Consider the problem of making change for a certain amount of money using the fewest coins possible. Suppose you have coins of denominations 1, 5, and 10.
+Problem: Make change for 28 cents.
+Greedy Approach:
+Start with the largest denomination (10 cents). You can use 2 coins of 10 cents (20 cents).
+Next, use 1 coin of 5 cents (totaling 25 cents).
+Finally, use 3 coins of 1 cent (totaling 28 cents).
+Result: The greedy algorithm gives you 2 (10s) + 1 (5) + 3 (1s) = 6 coins in total.
+Limitations
+While greedy algorithms are efficient and easy to implement, they do not guarantee an optimal solution for all problems. For example, in the coin change problem, if the denominations were 1, 3, and 4, the greedy approach might not yield the minimum number of coins.
+Conclusion
+Greedy algorithms are a powerful tool for solving optimization problems, especially when the problem exhibits the properties of optimal substructure and greedy choice property. However, it's essential to analyze the specific problem to determine if a greedy approach will yield the best solution.

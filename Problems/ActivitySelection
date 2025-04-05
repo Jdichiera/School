@@ -1,0 +1,75 @@
+The Activity Selection Problem is a classic optimization problem in computer science and operations research. The goal is to select the maximum number of activities that do not overlap, given a set of activities, each defined by a start time and an finish time.
+
+### Problem Statement
+
+You are given a set of activities, each with a start time and a finish time. The objective is to select the maximum number of activities that can be performed by a single person, assuming that a person can only work on one activity at a time.
+
+### Input
+
+- A list of activities, where each activity is represented by a pair of integers:
+  - \( (s_i, f_i) \): where \( s_i \) is the start time and \( f_i \) is the finish time of activity \( i \).
+
+### Example
+
+Consider the following set of activities:
+
+| Activity | Start Time | Finish Time |
+|----------|------------|-------------|
+| A1       | 1          | 3           |
+| A2       | 2          | 5           |
+| A3       | 4          | 6           |
+| A4       | 6          | 7           |
+| A5       | 5          | 8           |
+| A6       | 8          | 9           |
+
+### Solution Approach
+
+The greedy algorithm is typically used to solve the Activity Selection Problem. The steps are as follows:
+
+1. **Sort Activities**: First, sort the activities based on their finish times. This is crucial because selecting activities that finish earlier allows more time for subsequent activities.
+
+2. **Select Activities**: Initialize a variable to keep track of the last selected activity's finish time. Start with the first activity (after sorting) and select it. Then, iterate through the remaining activities and select an activity if its start time is greater than or equal to the finish time of the last selected activity.
+
+### Pseudocode
+
+Here’s a simple pseudocode for the greedy algorithm:
+
+```plaintext
+function activitySelection(activities):
+    sort activities by finish time
+    selectedActivities = []
+    lastFinishTime = 0
+
+    for each activity in activities:
+        if activity.start >= lastFinishTime:
+            selectedActivities.append(activity)
+            lastFinishTime = activity.finish
+
+    return selectedActivities
+```
+
+### Example Execution
+
+Using the example activities:
+
+1. **Sorted Activities**: 
+   - A1: (1, 3)
+   - A2: (2, 5)
+   - A3: (4, 6)
+   - A4: (6, 7)
+   - A5: (5, 8)
+   - A6: (8, 9)
+
+2. **Selection Process**:
+   - Select A1 (1, 3). Last finish time = 3.
+   - A2 (2, 5) cannot be selected (starts before 3).
+   - Select A3 (4, 6). Last finish time = 6.
+   - Select A4 (6, 7). Last finish time = 7.
+   - A5 (5, 8) cannot be selected (starts before 7).
+   - Select A6 (8, 9). Last finish time = 9.
+
+3. **Selected Activities**: A1, A3, A4, A6.
+
+### Conclusion
+
+The Activity Selection Problem is a great example of how greedy algorithms can be applied to solve optimization problems efficiently. The time complexity of this algorithm is \( O(n \log n) \) due to the sorting step, followed by a linear scan of the activities, making it efficient for large datasets.
