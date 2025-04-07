@@ -1,0 +1,50 @@
+The longest common subsequence (LCS) problem is a well-known problem in computer science and bioinformatics that involves finding the longest subsequence that is common to two sequences (which can be strings, arrays, or lists). Unlike substrings, subsequences do not require the characters to be contiguous; they only need to maintain the relative order.
+
+### Problem Definition
+
+Given two sequences, \( S1 \) and \( S2 \), the goal is to find the longest subsequence that appears in both sequences.
+
+### Example
+
+Consider the following two strings:
+
+- \( S1 = \text{"ABCBDAB"} \)
+- \( S2 = \text{"BDCAB"} \)
+
+The longest common subsequence in this case is "BCAB" or "BDAB", both of which have a length of 4.
+
+### Characteristics
+
+1. **Non-contiguity**: The characters in the subsequence do not need to be adjacent in the original strings, but they must appear in the same order.
+2. **Multiple Solutions**: There can be multiple longest common subsequences of the same length.
+3. **Length**: The length of the longest common subsequence can vary from 0 (if there are no common characters) to the length of the shorter string.
+
+### Applications
+
+The longest common subsequence problem has various applications, including:
+
+- **DNA Sequence Analysis**: Identifying similarities between genetic sequences.
+- **Text Comparison**: Finding similarities between documents or code.
+- **Version Control**: Comparing different versions of files to identify changes.
+
+### Algorithms
+
+Several algorithms can be used to solve the longest common subsequence problem, with the most common being:
+
+1. **Dynamic Programming**: This is the most widely used approach for solving the LCS problem. It uses a 2D table to store the lengths of common subsequences.
+
+   - **Dynamic Programming Approach**:
+     - Create a 2D array \( dp \) where \( dp[i][j] \) represents the length of the longest common subsequence of the first \( i \) characters of \( S1 \) and the first \( j \) characters of \( S2 \).
+     - If \( S1[i-1] = S2[j-1] \), then \( dp[i][j] = dp[i-1][j-1] + 1 \).
+     - If they are not equal, then \( dp[i][j] = \max(dp[i-1][j], dp[i][j-1]) \).
+     - The final answer will be found in \( dp[n][m] \), where \( n \) and \( m \) are the lengths of \( S1 \) and \( S2 \), respectively.
+
+   - **Time Complexity**: The time complexity of this approach is \( O(n \times m) \), where \( n \) and \( m \) are the lengths of the two sequences.
+
+2. **Recursive Approach**: A naive recursive approach can also be used, but it is inefficient for larger sequences due to overlapping subproblems. This approach has an exponential time complexity.
+
+3. **Space Optimization**: The dynamic programming solution can be optimized to use only two rows of the DP table instead of the entire table, reducing space complexity from \( O(n \times m) \) to \( O(\min(n, m)) \).
+
+### Conclusion
+
+The longest common subsequence problem is a fundamental problem in computer science with significant applications in various fields, particularly in bioinformatics and text processing. Understanding the problem and its solutions is essential for tasks involving sequence comparison and analysis.

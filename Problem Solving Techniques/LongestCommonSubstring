@@ -1,0 +1,46 @@
+The longest common substring problem involves finding the longest substring that appears in two or more strings. A substring is a contiguous sequence of characters within a string.
+
+### Example:
+
+Consider the following two strings:
+
+- String A: "abcdefg"
+- String B: "xyzabcde"
+
+**Step 1: Identify Substrings**
+
+The substrings of String A are:
+- "a", "ab", "abc", "abcd", "abcde", "abcdef", "abcdefg"
+- "b", "bc", "bcd", "bcde", "bcdef", "bcdefg"
+- "c", "cd", "cde", "cdef", "cdefg"
+- "d", "de", "def", "defg"
+- "e", "ef", "efg"
+- "f", "fg"
+- "g"
+
+The substrings of String B are:
+- "x", "xy", "xyz", "xyza", "xyzab", "xyzabc", "xyzabcd", "xyzabcde"
+- "y", "yz", "yza", "yzab", "yzabc", "yzabcd", "yzabcde"
+- "z", "za", "zab", "zabc", "zabcd", "zabcde"
+- "a", "ab", "abc", "abcd", "abcde"
+- "b", "bc", "bcd", "bcde"
+- "c", "cd", "cde"
+- "d", "de"
+- "e"
+
+**Step 2: Find Common Substrings**
+
+Now, we look for common substrings between the two strings. The common substrings are:
+- "a"
+- "ab"
+- "abc"
+- "abcd"
+- "abcde"
+
+**Step 3: Identify the Longest Common Substring**
+
+The longest common substring between String A and String B is "abcde", which has a length of 5.
+
+### Conclusion
+
+In this example, the longest common substring between "abcdefg" and "xyzabcde" is "abcde". The problem can be solved using various algorithms, including dynamic programming, suffix trees, or suffix arrays, depending on the specific requirements and constraints of the problem.
