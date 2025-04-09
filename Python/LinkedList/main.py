@@ -1,8 +1,8 @@
 from node import Node
-from linked_list import Linked_List
+from linked_list import LinkedList
 
 
-num_list = Linked_List()
+num_list = LinkedList()
 
 node_a = Node(66)
 node_b = Node(99)
