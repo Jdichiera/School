@@ -50,3 +50,36 @@ class LinkedList:
             current_node.next = succeeding_node
             if succeeding_node == None:
                 self.tail = current_node
+
+    def insertion_sort_singly_linked(self):
+        # we start two nodes into the list
+        before_current = self.head
+        current_node = before_current.next
+
+        # while the current_node is not null
+        # look for an insertion point where the current nodes data is less than the next node
+        while current_node != None:
+            next_node = current_node.next
+            position = self.find_insertion_position(current_node.data)
+
+            # If the position is the head of the list, then prepend the node to the head
+            if position == before_current:
+                before_current = current_node
+            # If it isnt the head then we want to remove the node so we can insert it where 
+            # it is less than the node after it
+            else:
+                self.remove_after(before_current)
+                if position == None:
+                    self.prepend(current_node)
+                else:
+                    self.insert_after(position, current_node)
+            current_node = next_node
+
+    def find_insertion_position(self, data_value):
+        position_a = None
+        position_b = self.head
+        while (position_b != None and position_b.data < data_value):
+            position_a = position_b
+            position_b = position_b.next
+        return position_a
+

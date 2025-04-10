@@ -51,3 +51,33 @@ class LinkedList:
 
         if current_node is self.tail:
             self.tail = predesessor_node
+
+    def insertion_sort_doubly_linked(self):
+        # Start at the second node in. 
+        current_node = self.head.next
+
+        # While the current node is not null we want to step through these steps
+        # set the next node to the node ahead of the current node
+        # set the search node to the node behind the current node
+        while current_node != None:
+            next_node = current_node.next
+            search_node = current_node.prev
+            # while the search nodes value is greater than the current node
+            # keep sliding the search node back
+            while (search_node != None and search_node.data > current_node.data):
+                search_node = search_node.prev
+
+            # once the search node has found a spot where it is less than the 
+            # current_node. That is where we want to put the current node
+            # remove the current node and put it back in the spot we found
+            self.remove(current_node)
+
+            # If the search node is null then we are at the head of the list
+            if (search_node == None):
+                current_node.prev = None
+                self.prepend(current_node)
+            else:
+                self.insert_after(search_node, current_node)
+
+            current_node = next_node
+        
